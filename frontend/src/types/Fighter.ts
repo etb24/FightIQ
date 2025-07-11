@@ -1,0 +1,36 @@
+export interface Fighter {
+    name: string;
+    nickname: string;
+    weight_class: string;
+    wins: number;
+    losses: number;
+    draws: number;
+    place_of_birth: string;
+    country: string;
+    knockouts: number;
+    submissions: number;
+    first_round_finishes: number;
+    striking_accuracy: number;
+    takedown_accuracy: number;
+    sig_str_landed_total: number;
+    sig_str_attempted_total: number;
+    takedowns_landed_total: number;
+    takedowns_attempted_total: number;
+    sig_strikes_per_min: number;
+    takedowns_avg_per_min: number;
+    sig_str_def: number;
+    knockdown_avg: number;
+    sig_str_absorbed_per_min: number;
+    sub_avg_per_min: number;
+    takedown_def: number;
+    avg_fight_time: number;
+    sig_strikes_while_standing: number;
+    sig_strikes_while_clinched: number;
+    sig_strikes_while_grounded: number;
+    sig_strikes_head: number;
+    sig_strikes_body: number;
+    sig_strikes_leg: number;
+    win_by_ko_tko: number;
+    win_by_decision: number;
+    win_by_submission: number;
+}
