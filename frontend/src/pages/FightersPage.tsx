@@ -8,56 +8,53 @@ const FightersPage: React.FC = () => {
     const [fighters, setFighters] = useState<Fighter[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<Error | null>(null);
-
     const [selectedCountry, setSelectedCountry] = useState<string>('');
     const [selectedWeightClass, setSelectedWeightClass] = useState<string>('');
     const [searchText, setSearchText] = useState<string>('');
+    const [page, setPage] = useState(0);
+    const [totalPages, setTotalPages] = useState(0);
+    const [pageSize] = useState<number>(20);
 
+    const [searchQuery, setSearchQuery] = useState<string>('');
     const [countries, setCountries] = useState<string[]>([]);
 
     const handleSearch = () => {
-        setLoading(true);
-        fetchFighters(searchText, selectedCountry, selectedWeightClass)
-            .then(data => {
-                setFighters(data);
-                setLoading(false);
-            })
-            .catch(err => {
-                setError(err);
-                setLoading(false);
-            });
+        setPage(0);
+        setSearchQuery(searchText);
     };
 
     const handleClearFilters = () => {
-        const clearedCountry = '';
-        const clearedWeightClass = '';
-        const clearedSearchText = '';
-
-        setSelectedCountry(clearedCountry);
-        setSelectedWeightClass(clearedWeightClass);
-        setSearchText(clearedSearchText);
-
-        //pass the cleared values to fetch immediately
-        setLoading(true);
-        fetchFighters(clearedCountry, clearedWeightClass, clearedSearchText)
-            .then(data => {
-                setFighters(data);
-                setLoading(false);
-            })
-            .catch(err => {
-                setError(err);
-                setLoading(false);
-            });
+        setSelectedCountry('');
+        setSelectedWeightClass('');
+        setSearchText('');
+        setSearchQuery('');
+        setPage(0);
     };
 
+    // FIX: find a better way to do this
+    const updateFilterAndResetPage = (updater: () => void) => {
+        updater();
+        setPage(0);
+    };
+
+
     useEffect(() => {
-        handleSearch();  //load all fighters on page load
+        setLoading(true);
         fetchCountries()
             .then((data) => {
                 setCountries(data);
             })
-            .catch(console.error);
-    }, []);
+        fetchFighters(searchQuery, selectedCountry, selectedWeightClass, page, pageSize)
+            .then(data => {
+                setFighters(data.content);
+                setTotalPages(data.totalPages);
+                setLoading(false);
+            })
+            .catch(err => {
+                setError(err);
+                setLoading(false);
+            });
+    }, [searchQuery, selectedCountry, selectedWeightClass, page]);
 
     if (loading) return <p>Loading fighters...</p>;
     if (error) return <p>Error: {error.message}</p>;
@@ -69,14 +66,22 @@ const FightersPage: React.FC = () => {
                 searchText={searchText}
                 country={selectedCountry}
                 weightClass={selectedWeightClass}
-                onSearchTextChange={setSearchText}
-                onCountryChange={setSelectedCountry}
-                onWeightClassChange={setSelectedWeightClass}
+                onSearchTextChange={(text) => updateFilterAndResetPage(() => setSearchText(text))}
+                onCountryChange={(country) => updateFilterAndResetPage(() => setSelectedCountry(country))}
+                onWeightClassChange={(weight) => updateFilterAndResetPage(() => setSelectedWeightClass(weight))}
                 onSearch={handleSearch}
                 onClear={handleClearFilters}
                 countries={countries}
             />
             <FightersTable fighters={fighters} />
+
+            <button onClick={() => setPage(prev => Math.max(prev - 1, 0))} disabled={page === 0}>
+                Previous
+            </button>
+
+            <button onClick={() => setPage(prev => prev + 1)} disabled={page + 1 >= totalPages}>
+                Next
+            </button>
         </div>
     );
 };

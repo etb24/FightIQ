@@ -10,7 +10,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
                                                  onWeightClassChange,
                                                  onSearch,
                                                  onClear,
-                                                 countries
+                                                 countries,
                                              }) => {
     return (
         <div style={{ marginBottom: '1rem' }}>
@@ -24,7 +24,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
                     style={{ marginLeft: '0.5rem' }}
                 />
             </label>
-            <label>
+            <label style={{ marginLeft: '1rem' }}>
                 Country:
                 <select value={country} onChange={(e) => onCountryChange(e.target.value)}>
                     <option value="">All</option>
