@@ -4,13 +4,26 @@ import {FilterBarProps} from "../types/FilterBar";
 const FilterBar: React.FC<FilterBarProps> = ({
                                                  country,
                                                  weightClass,
+                                                 searchText,
+                                                 onSearchTextChange,
                                                  onCountryChange,
                                                  onWeightClassChange,
                                                  onSearch,
+                                                 onClear,
                                                  countries
                                              }) => {
     return (
         <div style={{ marginBottom: '1rem' }}>
+            <label>
+                Search by Name:
+                <input
+                    type="text"
+                    value={searchText}
+                    onChange={(e) => onSearchTextChange(e.target.value)}
+                    placeholder="Enter fighter name"
+                    style={{ marginLeft: '0.5rem' }}
+                />
+            </label>
             <label>
                 Country:
                 <select value={country} onChange={(e) => onCountryChange(e.target.value)}>
@@ -45,6 +58,10 @@ const FilterBar: React.FC<FilterBarProps> = ({
             <button onClick={onSearch} style={{ marginLeft: '1rem' }}>
                 Search
             </button>
+            <button onClick={onClear} style={{ marginLeft: '0.5rem' }}>
+                Clear
+            </button>
+
         </div>
     );
 };
