@@ -18,47 +18,89 @@ public class Fighter {
     @Column(name = "weight_class") //necessary for service functions
     private String weightClass; //weight_class caused bug
 
+    @Column(name = "wins")
     private Integer wins;
+
+    @Column(name = "losses")
     private Integer losses;
+    @Column(name = "draws")
     private Integer draws;
+
+    @Column(name = "place_of_birth")
     private String place_of_birth;
+    @Column(name = "country")
     private String country;
+
+    @Column(name = "knockouts")
     private Integer knockouts;
+
+    @Column(name = "submissions")
     private Integer submissions;
-    private Integer first_round_finishes;
-    private Double striking_accuracy;
-    private Double takedown_accuracy;
-    private Integer sig_str_landed_total;
-    private Integer sig_str_attempted_total;
-    private Integer takedowns_landed_total;
-    private Integer takedowns_attempted_total;
-    private Double sig_strikes_per_min;
-    private Double takedowns_avg_per_min;
-    private Double sig_str_def;
-    private Double knockdown_avg;
-    private Double sig_str_absorbed_per_min;
-    private Double sub_avg_per_min;
-    private Double takedown_def;
-    private Double avg_fight_time;
-    private Integer sig_strikes_while_standing;
-    private Integer sig_strikes_while_clinched;
-    private Integer sig_strikes_while_grounded;
-    private Integer sig_strikes_head;
-    private Integer sig_strikes_body;
-    private Integer sig_strikes_leg;
-    private Integer win_by_ko_tko;
-    private Integer win_by_decision;
-    private Integer win_by_submission;
+
+    @Column(name = "first_round_finishes")
+    private Integer firstRoundFinishes;
+
+    @Column(name = "striking_accuracy")
+    private Double strikingAccuracy;
+    @Column(name = "takedown_accuracy")
+    private Double takedownAccuracy;
+
+    @Column(name = "sig_str_landed_total")
+    private Integer sigStrLandedTotal;
+    @Column(name = "sig_str_attempted_total")
+    private Integer sigStrAttemptedTotal;
+    @Column(name = "takedowns_landed_total")
+    private Integer takedownsLandedTotal;
+    @Column(name = "takedowns_attempted_total")
+    private Integer takedownsAttemptedTotal;
+
+    @Column(name = "sig_strikes_per_min")
+    private Double sigStrikesPerMin;
+    @Column(name = "takedowns_avg_per_min")
+    private Double takedownsAvgPerMin;
+
+    @Column(name = "sig_str_def")
+    private Double sigStrDef;
+    @Column(name = "knockdown_avg")
+    private Double knockdownAvg;
+    @Column(name = "sig_str_absorbed_per_min")
+    private Double sigStrAbsorbedPerMin;
+    @Column(name = "sub_avg_per_min")
+    private Double subAvgPerMin;
+    @Column(name = "takedown_def")
+    private Double takedownDef;
+    @Column(name = "avg_fight_time")
+    private Double avgFightTime;
+
+    @Column(name = "sig_strikes_while_standing")
+    private Integer sigStrikesWhileStanding;
+    @Column(name = "sig_strikes_while_clinched")
+    private Integer sigStrikesWhileClinched;
+    @Column(name = "sig_strikes_while_grounded")
+    private Integer sigStrikesWhileGrounded;
+    @Column(name = "sig_strikes_head")
+    private Integer sigStrikesHead;
+    @Column(name = "sig_strikes_body")
+    private Integer sigStrikesBody;
+    @Column(name = "sig_strikes_leg")
+    private Integer sigStrikesLeg;
+
+    @Column(name = "win_by_ko_tko")
+    private Integer winByKoTko;
+    @Column(name = "win_by_decision")
+    private Integer winByDecision;
+    @Column(name = "win_by_submission")
+    private Integer winBySubmission;
 
     // Constructors
     public Fighter() {
 
     }
 
-    public Fighter(String name, String nickname, String weight_class, Integer wins, Integer losses, Integer draws, String place_of_birth, String country, Integer knockouts, Integer submissions, Integer first_round_finishes, Double striking_accuracy, Double takedown_accuracy, Integer sig_str_landed_total, Integer sig_str_attempted_total, Integer takedowns_landed_total, Integer takedowns_attempted_total, Double sig_strikes_per_min, Double takedowns_avg_per_min, Double sig_str_def, Double knockdown_avg, Double sig_str_absorbed_per_min, Double sub_avg_per_min, Double takedown_def, Double avg_fight_time, Integer sig_strikes_while_standing, Integer sig_strikes_while_clinched, Integer sig_strikes_while_grounded, Integer sig_strikes_head, Integer sig_strikes_body, Integer sig_strikes_leg, Integer win_by_ko_tko, Integer win_by_decision, Integer win_by_submission) {
+    public Fighter(String name, String nickname, String weightClass, Integer wins, Integer losses, Integer draws, String place_of_birth, String country, Integer knockouts, Integer submissions, Integer firstRoundFinishes, Double strikingAccuracy, Double takedownAccuracy, Integer sigStrLandedTotal, Integer sigStrAttemptedTotal, Integer takedownsLandedTotal, Integer takedownsAttemptedTotal, Double sigStrikesPerMin, Double takedownsAvgPerMin, Double sigStrDef, Double knockdownAvg, Double sigStrAbsorbedPerMin, Double subAvgPerMin, Double takedownDef, Double avgFightTime, Integer sigStrikesWhileStanding, Integer sigStrikesWhileClinched, Integer sigStrikesWhileGrounded, Integer sigStrikesHead, Integer sigStrikesBody, Integer sigStrikesLeg, Integer winByKoTko, Integer winByDecision, Integer winBySubmission) {
         this.name = name;
         this.nickname = nickname;
-        this.weightClass = weight_class;
+        this.weightClass = weightClass;
         this.wins = wins;
         this.losses = losses;
         this.draws = draws;
@@ -66,33 +108,174 @@ public class Fighter {
         this.country = country;
         this.knockouts = knockouts;
         this.submissions = submissions;
-        this.first_round_finishes = first_round_finishes;
-        this.striking_accuracy = striking_accuracy;
-        this.takedown_accuracy = takedown_accuracy;
-        this.sig_str_landed_total = sig_str_landed_total;
-        this.sig_str_attempted_total = sig_str_attempted_total;
-        this.takedowns_landed_total = takedowns_landed_total;
-        this.takedowns_attempted_total = takedowns_attempted_total;
-        this.sig_strikes_per_min = sig_strikes_per_min;
-        this.takedowns_avg_per_min = takedowns_avg_per_min;
-        this.sig_str_def = sig_str_def;
-        this.knockdown_avg = knockdown_avg;
-        this.sig_str_absorbed_per_min = sig_str_absorbed_per_min;
-        this.sub_avg_per_min = sub_avg_per_min;
-        this.takedown_def = takedown_def;
-        this.avg_fight_time = avg_fight_time;
-        this.sig_strikes_while_standing = sig_strikes_while_standing;
-        this.sig_strikes_while_clinched = sig_strikes_while_clinched;
-        this.sig_strikes_while_grounded = sig_strikes_while_grounded;
-        this.sig_strikes_head = sig_strikes_head;
-        this.sig_strikes_body = sig_strikes_body;
-        this.sig_strikes_leg = sig_strikes_leg;
-        this.win_by_ko_tko = win_by_ko_tko;
-        this.win_by_decision = win_by_decision;
-        this.win_by_submission = win_by_submission;
+        this.firstRoundFinishes = firstRoundFinishes;
+        this.strikingAccuracy = strikingAccuracy;
+        this.takedownAccuracy = takedownAccuracy;
+        this.sigStrLandedTotal = sigStrLandedTotal;
+        this.sigStrAttemptedTotal = sigStrAttemptedTotal;
+        this.takedownsLandedTotal = takedownsLandedTotal;
+        this.takedownsAttemptedTotal = takedownsAttemptedTotal;
+        this.sigStrikesPerMin = sigStrikesPerMin;
+        this.takedownsAvgPerMin = takedownsAvgPerMin;
+        this.sigStrDef = sigStrDef;
+        this.knockdownAvg = knockdownAvg;
+        this.sigStrAbsorbedPerMin = sigStrAbsorbedPerMin;
+        this.subAvgPerMin = subAvgPerMin;
+        this.takedownDef = takedownDef;
+        this.avgFightTime = avgFightTime;
+        this.sigStrikesWhileStanding = sigStrikesWhileStanding;
+        this.sigStrikesWhileClinched = sigStrikesWhileClinched;
+        this.sigStrikesWhileGrounded = sigStrikesWhileGrounded;
+        this.sigStrikesHead = sigStrikesHead;
+        this.sigStrikesBody = sigStrikesBody;
+        this.sigStrikesLeg = sigStrikesLeg;
+        this.winByKoTko = winByKoTko;
+        this.winByDecision = winByDecision;
+        this.winBySubmission = winBySubmission;
     }
 
-    // getters
+    // Setters
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public void setWeightClass(String weightClass) {
+        this.weightClass = weightClass;
+    }
+
+    public void setWins(Integer wins) {
+        this.wins = wins;
+    }
+
+    public void setLosses(Integer losses) {
+        this.losses = losses;
+    }
+
+    public void setDraws(Integer draws) {
+        this.draws = draws;
+    }
+
+    public void setPlace_of_birth(String place_of_birth) {
+        this.place_of_birth = place_of_birth;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void setKnockouts(Integer knockouts) {
+        this.knockouts = knockouts;
+    }
+
+    public void setSubmissions(Integer submissions) {
+        this.submissions = submissions;
+    }
+
+    public void setFirstRoundFinishes(Integer firstRoundFinishes) {
+        this.firstRoundFinishes = firstRoundFinishes;
+    }
+
+    public void setStrikingAccuracy(Double strikingAccuracy) {
+        this.strikingAccuracy = strikingAccuracy;
+    }
+
+    public void setTakedownAccuracy(Double takedownAccuracy) {
+        this.takedownAccuracy = takedownAccuracy;
+    }
+
+    public void setSigStrLandedTotal(Integer sigStrLandedTotal) {
+        this.sigStrLandedTotal = sigStrLandedTotal;
+    }
+
+    public void setSigStrAttemptedTotal(Integer sigStrAttemptedTotal) {
+        this.sigStrAttemptedTotal = sigStrAttemptedTotal;
+    }
+
+    public void setTakedownsLandedTotal(Integer takedownsLandedTotal) {
+        this.takedownsLandedTotal = takedownsLandedTotal;
+    }
+
+    public void setTakedownsAttemptedTotal(Integer takedownsAttemptedTotal) {
+        this.takedownsAttemptedTotal = takedownsAttemptedTotal;
+    }
+
+    public void setSigStrikesPerMin(Double sigStrikesPerMin) {
+        this.sigStrikesPerMin = sigStrikesPerMin;
+    }
+
+    public void setTakedownsAvgPerMin(Double takedownsAvgPerMin) {
+        this.takedownsAvgPerMin = takedownsAvgPerMin;
+    }
+
+    public void setSigStrDef(Double sigStrDef) {
+        this.sigStrDef = sigStrDef;
+    }
+
+    public void setKnockdownAvg(Double knockdownAvg) {
+        this.knockdownAvg = knockdownAvg;
+    }
+
+    public void setSigStrAbsorbedPerMin(Double sigStrAbsorbedPerMin) {
+        this.sigStrAbsorbedPerMin = sigStrAbsorbedPerMin;
+    }
+
+    public void setSubAvgPerMin(Double subAvgPerMin) {
+        this.subAvgPerMin = subAvgPerMin;
+    }
+
+    public void setTakedownDef(Double takedownDef) {
+        this.takedownDef = takedownDef;
+    }
+
+    public void setAvgFightTime(Double avgFightTime) {
+        this.avgFightTime = avgFightTime;
+    }
+
+    public void setSigStrikesWhileStanding(Integer sigStrikesWhileStanding) {
+        this.sigStrikesWhileStanding = sigStrikesWhileStanding;
+    }
+
+    public void setSigStrikesWhileClinched(Integer sigStrikesWhileClinched) {
+        this.sigStrikesWhileClinched = sigStrikesWhileClinched;
+    }
+
+    public void setSigStrikesWhileGrounded(Integer sigStrikesWhileGrounded) {
+        this.sigStrikesWhileGrounded = sigStrikesWhileGrounded;
+    }
+
+    public void setSigStrikesHead(Integer sigStrikesHead) {
+        this.sigStrikesHead = sigStrikesHead;
+    }
+
+    public void setSigStrikesBody(Integer sigStrikesBody) {
+        this.sigStrikesBody = sigStrikesBody;
+    }
+
+    public void setSigStrikesLeg(Integer sigStrikesLeg) {
+        this.sigStrikesLeg = sigStrikesLeg;
+    }
+
+    public void setWinByKoTko(Integer winByKoTko) {
+        this.winByKoTko = winByKoTko;
+    }
+
+    public void setWinByDecision(Integer winByDecision) {
+        this.winByDecision = winByDecision;
+    }
+
+    public void setWinBySubmission(Integer winBySubmission) {
+        this.winBySubmission = winBySubmission;
+    }
+
+    // Getters
+
+
     public String getName() {
         return name;
     }
@@ -101,7 +284,7 @@ public class Fighter {
         return nickname;
     }
 
-    public String getWeight_class() {
+    public String getWeightClass() {
         return weightClass;
     }
 
@@ -133,238 +316,99 @@ public class Fighter {
         return submissions;
     }
 
-    public Integer getFirst_round_finishes() {
-        return first_round_finishes;
+    public Integer getFirstRoundFinishes() {
+        return firstRoundFinishes;
     }
 
-    public Double getStriking_accuracy() {
-        return striking_accuracy;
+    public Double getStrikingAccuracy() {
+        return strikingAccuracy;
     }
 
-    public Double getTakedown_accuracy() {
-        return takedown_accuracy;
+    public Double getTakedownAccuracy() {
+        return takedownAccuracy;
     }
 
-    public Integer getSig_str_landed_total() {
-        return sig_str_landed_total;
+    public Integer getSigStrLandedTotal() {
+        return sigStrLandedTotal;
     }
 
-    public Integer getSig_str_attempted_total() {
-        return sig_str_attempted_total;
+    public Integer getSigStrAttemptedTotal() {
+        return sigStrAttemptedTotal;
     }
 
-    public Integer getTakedowns_landed_total() {
-        return takedowns_landed_total;
+    public Integer getTakedownsLandedTotal() {
+        return takedownsLandedTotal;
     }
 
-    public Integer getTakedowns_attempted_total() {
-        return takedowns_attempted_total;
+    public Integer getTakedownsAttemptedTotal() {
+        return takedownsAttemptedTotal;
     }
 
-    public Double getSig_strikes_per_min() {
-        return sig_strikes_per_min;
+    public Double getSigStrikesPerMin() {
+        return sigStrikesPerMin;
     }
 
-    public Double getTakedowns_avg_per_min() {
-        return takedowns_avg_per_min;
+    public Double getTakedownsAvgPerMin() {
+        return takedownsAvgPerMin;
     }
 
-    public Double getSig_str_def() {
-        return sig_str_def;
+    public Double getSigStrDef() {
+        return sigStrDef;
     }
 
-    public Double getKnockdown_avg() {
-        return knockdown_avg;
+    public Double getKnockdownAvg() {
+        return knockdownAvg;
     }
 
-    public Double getSig_str_absorbed_per_min() {
-        return sig_str_absorbed_per_min;
+    public Double getSigStrAbsorbedPerMin() {
+        return sigStrAbsorbedPerMin;
     }
 
-    public Double getSub_avg_per_min() {
-        return sub_avg_per_min;
+    public Double getSubAvgPerMin() {
+        return subAvgPerMin;
     }
 
-    public Double getTakedown_def() {
-        return takedown_def;
+    public Double getTakedownDef() {
+        return takedownDef;
     }
 
-    public Double getAvg_fight_time() {
-        return avg_fight_time;
+    public Double getAvgFightTime() {
+        return avgFightTime;
     }
 
-    public Integer getSig_strikes_while_standing() {
-        return sig_strikes_while_standing;
+    public Integer getSigStrikesWhileStanding() {
+        return sigStrikesWhileStanding;
     }
 
-    public Integer getSig_strikes_while_clinched() {
-        return sig_strikes_while_clinched;
+    public Integer getSigStrikesWhileClinched() {
+        return sigStrikesWhileClinched;
     }
 
-    public Integer getSig_strikes_while_grounded() {
-        return sig_strikes_while_grounded;
+    public Integer getSigStrikesWhileGrounded() {
+        return sigStrikesWhileGrounded;
     }
 
-    public Integer getSig_strikes_head() {
-        return sig_strikes_head;
+    public Integer getSigStrikesHead() {
+        return sigStrikesHead;
     }
 
-    public Integer getSig_strikes_body() {
-        return sig_strikes_body;
+    public Integer getSigStrikesBody() {
+        return sigStrikesBody;
     }
 
-    public Integer getSig_strikes_leg() {
-        return sig_strikes_leg;
+    public Integer getSigStrikesLeg() {
+        return sigStrikesLeg;
     }
 
-    public Integer getWin_by_ko_tko() {
-        return win_by_ko_tko;
+    public Integer getWinByKoTko() {
+        return winByKoTko;
     }
 
-    public Integer getWin_by_decision() {
-        return win_by_decision;
+    public Integer getWinByDecision() {
+        return winByDecision;
     }
 
-    public Integer getWin_by_submission() {
-        return win_by_submission;
+    public Integer getWinBySubmission() {
+        return winBySubmission;
     }
-
-    // setters
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public void setWeight_class(String weight_class) {
-        this.weightClass = weight_class;
-    }
-
-    public void setWins(Integer wins) {
-        this.wins = wins;
-    }
-
-    public void setLosses(Integer losses) {
-        this.losses = losses;
-    }
-
-    public void setDraws(Integer draws) {
-        this.draws = draws;
-    }
-
-    public void setPlace_of_birth(String place_of_birth) {
-        this.place_of_birth = place_of_birth;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public void setKnockouts(Integer knockouts) {
-        this.knockouts = knockouts;
-    }
-
-    public void setSubmissions(Integer submissions) {
-        this.submissions = submissions;
-    }
-
-    public void setFirst_round_finishes(Integer first_round_finishes) {
-        this.first_round_finishes = first_round_finishes;
-    }
-
-    public void setStriking_accuracy(Double striking_accuracy) {
-        this.striking_accuracy = striking_accuracy;
-    }
-
-    public void setTakedown_accuracy(Double takedown_accuracy) {
-        this.takedown_accuracy = takedown_accuracy;
-    }
-
-    public void setSig_str_landed_total(Integer sig_str_landed_total) {
-        this.sig_str_landed_total = sig_str_landed_total;
-    }
-
-    public void setSig_str_attempted_total(Integer sig_str_attempted_total) {
-        this.sig_str_attempted_total = sig_str_attempted_total;
-    }
-
-    public void setTakedowns_landed_total(Integer takedowns_landed_total) {
-        this.takedowns_landed_total = takedowns_landed_total;
-    }
-
-    public void setTakedowns_attempted_total(Integer takedowns_attempted_total) {
-        this.takedowns_attempted_total = takedowns_attempted_total;
-    }
-
-    public void setSig_strikes_per_min(Double sig_strikes_per_min) {
-        this.sig_strikes_per_min = sig_strikes_per_min;
-    }
-
-    public void setTakedowns_avg_per_min(Double takedowns_avg_per_min) {
-        this.takedowns_avg_per_min = takedowns_avg_per_min;
-    }
-
-    public void setSig_str_def(Double sig_str_def) {
-        this.sig_str_def = sig_str_def;
-    }
-
-    public void setKnockdown_avg(Double knockdown_avg) {
-        this.knockdown_avg = knockdown_avg;
-    }
-
-    public void setSig_str_absorbed_per_min(Double sig_str_absorbed_per_min) {
-        this.sig_str_absorbed_per_min = sig_str_absorbed_per_min;
-    }
-
-    public void setSub_avg_per_min(Double sub_avg_per_min) {
-        this.sub_avg_per_min = sub_avg_per_min;
-    }
-
-    public void setTakedown_def(Double takedown_def) {
-        this.takedown_def = takedown_def;
-    }
-
-    public void setAvg_fight_time(Double avg_fight_time) {
-        this.avg_fight_time = avg_fight_time;
-    }
-
-    public void setSig_strikes_while_standing(Integer sig_strikes_while_standing) {
-        this.sig_strikes_while_standing = sig_strikes_while_standing;
-    }
-
-    public void setSig_strikes_while_clinched(Integer sig_strikes_while_clinched) {
-        this.sig_strikes_while_clinched = sig_strikes_while_clinched;
-    }
-
-    public void setSig_strikes_while_grounded(Integer sig_strikes_while_grounded) {
-        this.sig_strikes_while_grounded = sig_strikes_while_grounded;
-    }
-
-    public void setSig_strikes_head(Integer sig_strikes_head) {
-        this.sig_strikes_head = sig_strikes_head;
-    }
-
-    public void setSig_strikes_body(Integer sig_strikes_body) {
-        this.sig_strikes_body = sig_strikes_body;
-    }
-
-    public void setSig_strikes_leg(Integer sig_strikes_leg) {
-        this.sig_strikes_leg = sig_strikes_leg;
-    }
-
-    public void setWin_by_ko_tko(Integer win_by_ko_tko) {
-        this.win_by_ko_tko = win_by_ko_tko;
-    }
-
-    public void setWin_by_decision(Integer win_by_decision) {
-        this.win_by_decision = win_by_decision;
-    }
-
-    public void setWin_by_submission(Integer win_by_submission) {
-        this.win_by_submission = win_by_submission;
-    }
-
-
 }

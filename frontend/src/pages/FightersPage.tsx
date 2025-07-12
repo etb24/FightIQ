@@ -3,6 +3,7 @@ import {fetchCountries, fetchFighters} from '../api/fighterApi';
 import FightersTable from '../components/FightersTable';
 import FilterBar from '../components/FilterBar';
 import { Fighter } from '../types/Fighter';
+import { FightersTableProps } from '../types/FightersTable';
 
 const FightersPage: React.FC = () => {
     const [fighters, setFighters] = useState<Fighter[]>([]);
@@ -13,10 +14,13 @@ const FightersPage: React.FC = () => {
     const [searchText, setSearchText] = useState<string>('');
     const [page, setPage] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
-    const [pageSize] = useState<number>(20);
+    const [pageSize] = useState<number>(10);
 
     const [searchQuery, setSearchQuery] = useState<string>('');
     const [countries, setCountries] = useState<string[]>([]);
+
+    const [sortBy, setSortBy] = useState<string>('');
+    const [sortDirection, setDirection] = useState<'asc' | 'desc'>('asc');
 
     const handleSearch = () => {
         setPage(0);
@@ -29,6 +33,15 @@ const FightersPage: React.FC = () => {
         setSearchText('');
         setSearchQuery('');
         setPage(0);
+        setSortBy('name');
+        setDirection('asc');
+    };
+
+    const handleSort = (field: string) => {
+        const newDirection: 'asc' | 'desc' = (sortBy === field && sortDirection === 'asc') ? 'desc' : 'asc';
+        setSortBy(field);
+        setDirection(newDirection);
+        setPage(0);  // reset to first page
     };
 
     // FIX: find a better way to do this
@@ -37,14 +50,13 @@ const FightersPage: React.FC = () => {
         setPage(0);
     };
 
-
     useEffect(() => {
         setLoading(true);
         fetchCountries()
             .then((data) => {
                 setCountries(data);
             })
-        fetchFighters(searchQuery, selectedCountry, selectedWeightClass, page, pageSize)
+        fetchFighters(searchQuery, selectedCountry, selectedWeightClass, page, pageSize, sortBy, sortDirection)
             .then(data => {
                 setFighters(data.content);
                 setTotalPages(data.totalPages);
@@ -54,7 +66,8 @@ const FightersPage: React.FC = () => {
                 setError(err);
                 setLoading(false);
             });
-    }, [searchQuery, selectedCountry, selectedWeightClass, page]);
+    }, [searchQuery, selectedCountry, selectedWeightClass, page, sortBy, sortDirection]);
+
 
     if (loading) return <p>Loading fighters...</p>;
     if (error) return <p>Error: {error.message}</p>;
@@ -73,7 +86,12 @@ const FightersPage: React.FC = () => {
                 onClear={handleClearFilters}
                 countries={countries}
             />
-            <FightersTable fighters={fighters} />
+            <FightersTable
+                fighters={fighters}
+                sortBy={sortBy}
+                sortDirection={sortDirection}
+                onSort={handleSort}
+            />
 
             <button onClick={() => setPage(prev => Math.max(prev - 1, 0))} disabled={page === 0}>
                 Previous

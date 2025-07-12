@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,17 +28,14 @@ public class FighterController {
             @RequestParam(required = false) String name,
             @RequestParam(required = false) String weight_class,
             @RequestParam(required = false) String country,
-            @RequestParam int page,
-            @RequestParam int size) {
-
-        Pageable pageable = PageRequest.of(page, size);
-
+            @PageableDefault(sort = "name", direction = Sort.Direction.ASC)Pageable pageable
+    ) {
         if (name != null) {
             return fighterService.getFightersFromName(name, pageable);
         } else if (country != null && weight_class != null) {
-            return fighterService.getFightersByCountryAndWeightClass(country, weight_class, pageable);
+            return fighterService.getFightersByCountryAndWeight_Class(country, weight_class, pageable);
         } else if (weight_class != null) {
-            return fighterService.getFightersFromWeight_class(weight_class, pageable);
+            return fighterService.getFightersFromWeight_Class(weight_class, pageable);
         } else if (country != null) {
             return fighterService.getFightersFromCountry(country, pageable);
         } else {

@@ -28,12 +28,12 @@ public class FighterService {
         return fighterRepository.findByNameContainingIgnoreCase(name, pageable);
     }
 
-    public Page<Fighter> getFightersByCountryAndWeightClass(String country, String weight_class, Pageable pageable) {
-        return fighterRepository.findByCountryIgnoreCaseAndWeightClassIgnoreCase(country, weight_class, pageable);
+    public Page<Fighter> getFightersByCountryAndWeight_Class(String country, String weightClass, Pageable pageable) {
+        return fighterRepository.findByCountryIgnoreCaseAndWeightClassIgnoreCase(country, weightClass, pageable);
     }
 
-    public Page<Fighter> getFightersFromWeight_class(String weight_class, Pageable pageable) {
-        return fighterRepository.findByWeightClassIgnoreCase(weight_class, pageable);
+    public Page<Fighter> getFightersFromWeight_Class(String weightClass, Pageable pageable) {
+        return fighterRepository.findByWeightClassIgnoreCase(weightClass, pageable);
     }
 
     public Page<Fighter> getFightersFromCountry(String country, Pageable pageable) {
@@ -61,7 +61,7 @@ public class FighterService {
             Fighter fighterToUpdate = existingFighter.get();
             fighterToUpdate.setName(updatedFighter.getName());
             fighterToUpdate.setCountry(updatedFighter.getCountry());
-            fighterToUpdate.setWeight_class(updatedFighter.getWeight_class());
+            fighterToUpdate.setWeightClass(updatedFighter.getWeightClass());
             fighterToUpdate.setWins(updatedFighter.getWins());
             fighterToUpdate.setDraws(updatedFighter.getDraws());
             fighterToUpdate.setLosses(updatedFighter.getLosses());

@@ -1,11 +1,8 @@
 import React from 'react';
 import { Fighter } from '../types/Fighter';
+import { FightersTableProps } from "../types/FightersTable";
 
-interface FightersTableProps {
-    fighters: Fighter[];
-}
-
-const FightersTable: React.FC<FightersTableProps> = ({ fighters }) => {
+const FightersTable: React.FC<FightersTableProps> = ({ fighters, sortBy, sortDirection, onSort }) => {
     return (
         <div className="table-container">
             <table border={1} cellPadding={5} cellSpacing={0}>
@@ -14,37 +11,37 @@ const FightersTable: React.FC<FightersTableProps> = ({ fighters }) => {
                     <th>Name</th>
                     <th>Nickname</th>
                     <th>Weight Class</th>
-                    <th>Wins</th>
-                    <th>Losses</th>
-                    <th>Draws</th>
+                    <th onClick={() => onSort('wins')}>Wins</th>
+                    <th onClick={() => onSort('losses')}>Losses</th>
+                    <th onClick={() => onSort('draws')}>Draws</th>
                     <th>Place of Birth</th>
                     <th>Country</th>
-                    <th>Knockouts</th>
-                    <th>Submissions</th>
-                    <th>First Round Finishes</th>
-                    <th>Striking Accuracy</th>
-                    <th>Takedown Accuracy</th>
-                    <th>Sig Strikes Landed</th>
-                    <th>Sig Strikes Attempted</th>
-                    <th>Takedowns Landed</th>
-                    <th>Takedowns Attempted</th>
-                    <th>Sig Strikes Per Min</th>
-                    <th>Takedowns Avg Per Min</th>
-                    <th>Sig Strike Defense</th>
-                    <th>Knockdown Avg</th>
-                    <th>Sig Strikes Absorbed Per Min</th>
-                    <th>Sub Avg Per Min</th>
-                    <th>Takedown Defense</th>
-                    <th>Avg Fight Time</th>
-                    <th>Sig Strikes Standing</th>
-                    <th>Sig Strikes Clinched</th>
-                    <th>Sig Strikes Grounded</th>
-                    <th>Sig Strikes Head</th>
-                    <th>Sig Strikes Body</th>
-                    <th>Sig Strikes Leg</th>
-                    <th>Wins by KO/TKO</th>
-                    <th>Wins by Decision</th>
-                    <th>Wins by Submission</th>
+                    <th onClick={() => onSort('knockouts')}>Knockouts</th>
+                    <th onClick={() => onSort('submissions')}>Submissions</th>
+                    <th onClick={() => onSort('firstRoundFinishes')}>First Round Finishes</th>
+                    <th onClick={() => onSort('strikingAccuracy')}>Striking Accuracy</th>
+                    <th onClick={() => onSort('takedownAccuracy')}>Takedown Accuracy</th>
+                    <th onClick={() => onSort('sigStrLandedTotal')}>Sig Strikes Landed</th>
+                    <th onClick={() => onSort('sigAtrAttemptedTotal')}>Sig Strikes Attempted</th>
+                    <th onClick={() => onSort('takedownsLandedTotal')}>Takedowns Landed</th>
+                    <th onClick={() => onSort('takedownsAttemptedTotal')}>Takedowns Attempted</th>
+                    <th onClick={() => onSort('sigStrikesPerMin')}>Sig Strikes Per Min</th>
+                    <th onClick={() => onSort('takedownsAvgPerMin')}>Takedowns Avg Per Min</th>
+                    <th onClick={() => onSort('sigStrDef')}>Sig Strike Defense</th>
+                    <th onClick={() => onSort('knockdownAvg')}>Knockdown Avg</th>
+                    <th onClick={() => onSort('sigStrAbsorbedPerMin')}>Sig Strikes Absorbed Per Min</th>
+                    <th onClick={() => onSort('subAvgPerMin')}>Sub Avg Per Min</th>
+                    <th onClick={() => onSort('takedownDef')}>Takedown Defense</th>
+                    <th onClick={() => onSort('avgFightTime')}>Avg Fight Time</th>
+                    <th onClick={() => onSort('sigStrikesWhileStanding')}>Sig Strikes Standing</th>
+                    <th onClick={() => onSort('sigStrikesWhileClinched')}>Sig Strikes Clinched</th>
+                    <th onClick={() => onSort('sigStrikesWhileGrounded')}>Sig Strikes Grounded</th>
+                    <th onClick={() => onSort('sigStrikesHead')}>Sig Strikes Head</th>
+                    <th onClick={() => onSort('sigStrikesBody')}>Sig Strikes Body</th>
+                    <th onClick={() => onSort('sigStrikesLeg')}>Sig Strikes Leg</th>
+                    <th onClick={() => onSort('winByKoTko')}>Wins by KO/TKO</th>
+                    <th onClick={() => onSort('winByDecision')}>Wins by Decision</th>
+                    <th onClick={() => onSort('winBySubmission')}>Wins by Submission</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -52,7 +49,7 @@ const FightersTable: React.FC<FightersTableProps> = ({ fighters }) => {
                     <tr key={index}>
                         <td>{fighter.name || 'N/A'}</td>
                         <td>{fighter.nickname || 'N/A'}</td>
-                        <td>{fighter.weight_class || 'N/A'}</td>
+                        <td>{fighter.weightClass || 'N/A'}</td>
                         <td>{fighter.wins ?? 0}</td>
                         <td>{fighter.losses ?? 0}</td>
                         <td>{fighter.draws ?? 0}</td>
@@ -60,30 +57,30 @@ const FightersTable: React.FC<FightersTableProps> = ({ fighters }) => {
                         <td>{fighter.country || 'N/A'}</td>
                         <td>{fighter.knockouts ?? 0}</td>
                         <td>{fighter.submissions ?? 0}</td>
-                        <td>{fighter.first_round_finishes ?? 0}</td>
-                        <td>{fighter.striking_accuracy ?? 0}</td>
-                        <td>{fighter.takedown_accuracy ?? 0}</td>
-                        <td>{fighter.sig_str_landed_total ?? 0}</td>
-                        <td>{fighter.sig_str_attempted_total ?? 0}</td>
-                        <td>{fighter.takedowns_landed_total ?? 0}</td>
-                        <td>{fighter.takedowns_attempted_total ?? 0}</td>
-                        <td>{fighter.sig_strikes_per_min ?? 0}</td>
-                        <td>{fighter.takedowns_avg_per_min ?? 0}</td>
-                        <td>{fighter.sig_str_def ?? 0}</td>
-                        <td>{fighter.knockdown_avg ?? 0}</td>
-                        <td>{fighter.sig_str_absorbed_per_min ?? 0}</td>
-                        <td>{fighter.sub_avg_per_min ?? 0}</td>
-                        <td>{fighter.takedown_def ?? 0}</td>
-                        <td>{fighter.avg_fight_time ?? 0}</td>
-                        <td>{fighter.sig_strikes_while_standing ?? 0}</td>
-                        <td>{fighter.sig_strikes_while_clinched ?? 0}</td>
-                        <td>{fighter.sig_strikes_while_grounded ?? 0}</td>
-                        <td>{fighter.sig_strikes_head ?? 0}</td>
-                        <td>{fighter.sig_strikes_body ?? 0}</td>
-                        <td>{fighter.sig_strikes_leg ?? 0}</td>
-                        <td>{fighter.win_by_ko_tko ?? 0}</td>
-                        <td>{fighter.win_by_decision ?? 0}</td>
-                        <td>{fighter.win_by_submission ?? 0}</td>
+                        <td>{fighter.firstRoundFinishes ?? 0}</td>
+                        <td>{fighter.strikingAccuracy ?? 0}</td>
+                        <td>{fighter.takedownAccuracy ?? 0}</td>
+                        <td>{fighter.sigStrLandedTotal ?? 0}</td>
+                        <td>{fighter.sigStrAttemptedTotal ?? 0}</td>
+                        <td>{fighter.takedownsLandedTotal ?? 0}</td>
+                        <td>{fighter.takedownsAttemptedTotal ?? 0}</td>
+                        <td>{fighter.sigStrikesPerMin ?? 0}</td>
+                        <td>{fighter.takedownsAvgPerMin ?? 0}</td>
+                        <td>{fighter.sigStrDef ?? 0}</td>
+                        <td>{fighter.knockdownAvg ?? 0}</td>
+                        <td>{fighter.sigStrAbsorbedPerMin ?? 0}</td>
+                        <td>{fighter.subAvgPerMin ?? 0}</td>
+                        <td>{fighter.takedownDef ?? 0}</td>
+                        <td>{fighter.avgFightTime ?? 0}</td>
+                        <td>{fighter.sigStrikesWhileStanding ?? 0}</td>
+                        <td>{fighter.sigStrikesWhileClinched ?? 0}</td>
+                        <td>{fighter.sigStrikesWhileGrounded ?? 0}</td>
+                        <td>{fighter.sigStrikesHead ?? 0}</td>
+                        <td>{fighter.sigStrikesBody ?? 0}</td>
+                        <td>{fighter.sigStrikesLeg ?? 0}</td>
+                        <td>{fighter.winByKoTko ?? 0}</td>
+                        <td>{fighter.winByDecision ?? 0}</td>
+                        <td>{fighter.winBySubmission ?? 0}</td>
                     </tr>
                 ))}
                 </tbody>
