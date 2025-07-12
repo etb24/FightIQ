@@ -1,5 +1,6 @@
 import React from 'react';
-import {FilterBarProps} from "../types/FilterBar";
+import { FilterBarProps } from '../types/FilterBar';
+import './FilterBar.css';
 
 const FilterBar: React.FC<FilterBarProps> = ({
                                                  country,
@@ -13,19 +14,19 @@ const FilterBar: React.FC<FilterBarProps> = ({
                                                  countries,
                                              }) => {
     return (
-        <div style={{ marginBottom: '1rem' }}>
+        <div className="filter-bar">
             <label>
-                Search by Name:
+                Search by Name
                 <input
                     type="text"
                     value={searchText}
                     onChange={(e) => onSearchTextChange(e.target.value)}
                     placeholder="Enter fighter name"
-                    style={{ marginLeft: '0.5rem' }}
                 />
             </label>
-            <label style={{ marginLeft: '1rem' }}>
-                Country:
+
+            <label>
+                Country
                 <select value={country} onChange={(e) => onCountryChange(e.target.value)}>
                     <option value="">All</option>
                     {countries.map((c: string) => (
@@ -34,8 +35,8 @@ const FilterBar: React.FC<FilterBarProps> = ({
                 </select>
             </label>
 
-            <label style={{ marginLeft: '1rem' }}>
-                Weight Class:
+            <label>
+                Weight Class
                 <select value={weightClass} onChange={(e) => onWeightClassChange(e.target.value)}>
                     <option value="">All</option>
                     <option value="Flyweight Division">Flyweight</option>
@@ -46,22 +47,18 @@ const FilterBar: React.FC<FilterBarProps> = ({
                     <option value="Middleweight Division">Middleweight</option>
                     <option value="Light Heavyweight Division">Light Heavyweight</option>
                     <option value="Heavyweight Division">Heavyweight</option>
-
                     <option value="Women's Strawweight Division">Women's Strawweight</option>
                     <option value="Women's Flyweight Division">Women's Flyweight</option>
                     <option value="Women's Bantamweight Division">Women's Bantamweight</option>
                     <option value="Women's Featherweight Division">Women's Featherweight</option>
-                    <option value= "N/A" >N/A</option>
+                    <option value="N/A">N/A</option>
                 </select>
             </label>
 
-            <button onClick={onSearch} style={{ marginLeft: '1rem' }}>
-                Search
-            </button>
-            <button onClick={onClear} style={{ marginLeft: '0.5rem' }}>
-                Clear
-            </button>
-
+            <div className="button-group">
+                <button onClick={onSearch}>Search</button>
+                <button onClick={onClear}>Clear</button>
+            </div>
         </div>
     );
 };

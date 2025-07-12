@@ -1,14 +1,14 @@
 import React from 'react';
-import { Fighter } from '../types/Fighter';
 import { FightersTableProps } from "../types/FightersTable";
+import './FightersTable.css';
 
-const FightersTable: React.FC<FightersTableProps> = ({ fighters, sortBy, sortDirection, onSort }) => {
+const FightersTable: React.FC<FightersTableProps> = ({ fighters, onSort }) => {
     return (
         <div className="table-container">
             <table border={1} cellPadding={5} cellSpacing={0}>
                 <thead>
                 <tr>
-                    <th>Name</th>
+                    <th onClick={() => onSort('name')}>Name</th>
                     <th>Nickname</th>
                     <th>Weight Class</th>
                     <th onClick={() => onSort('wins')}>Wins</th>
@@ -39,9 +39,6 @@ const FightersTable: React.FC<FightersTableProps> = ({ fighters, sortBy, sortDir
                     <th onClick={() => onSort('sigStrikesHead')}>Sig Strikes Head</th>
                     <th onClick={() => onSort('sigStrikesBody')}>Sig Strikes Body</th>
                     <th onClick={() => onSort('sigStrikesLeg')}>Sig Strikes Leg</th>
-                    <th onClick={() => onSort('winByKoTko')}>Wins by KO/TKO</th>
-                    <th onClick={() => onSort('winByDecision')}>Wins by Decision</th>
-                    <th onClick={() => onSort('winBySubmission')}>Wins by Submission</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -53,8 +50,8 @@ const FightersTable: React.FC<FightersTableProps> = ({ fighters, sortBy, sortDir
                         <td>{fighter.wins ?? 0}</td>
                         <td>{fighter.losses ?? 0}</td>
                         <td>{fighter.draws ?? 0}</td>
-                        <td>{fighter.place_of_birth || 'N/A'}</td>
-                        <td>{fighter.country || 'N/A'}</td>
+                        <td>{fighter.place_of_birth || 'Unknown'}</td>
+                        <td>{fighter.country || 'Unknown'}</td>
                         <td>{fighter.knockouts ?? 0}</td>
                         <td>{fighter.submissions ?? 0}</td>
                         <td>{fighter.firstRoundFinishes ?? 0}</td>
@@ -78,9 +75,6 @@ const FightersTable: React.FC<FightersTableProps> = ({ fighters, sortBy, sortDir
                         <td>{fighter.sigStrikesHead ?? 0}</td>
                         <td>{fighter.sigStrikesBody ?? 0}</td>
                         <td>{fighter.sigStrikesLeg ?? 0}</td>
-                        <td>{fighter.winByKoTko ?? 0}</td>
-                        <td>{fighter.winByDecision ?? 0}</td>
-                        <td>{fighter.winBySubmission ?? 0}</td>
                     </tr>
                 ))}
                 </tbody>

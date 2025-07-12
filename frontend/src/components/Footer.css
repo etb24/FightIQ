@@ -1,0 +1,36 @@
+.app-footer {
+    background-color: #0a0a0a;
+    color: #eee;
+    text-align: center;
+    padding: 1rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-columns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0rem;
+}
+
+.footer-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-icons a {
+    color: #eee;
+    transition: color 0.3s;
+}
+
+.footer-icons a:hover {
+    color: #e50914;
+}
+
+.footer-bottom {
+    font-size: 0.875rem;
+    opacity: 0.7;
+}
