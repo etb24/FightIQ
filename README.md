@@ -1,6 +1,6 @@
 # FightIQ – UFC Stats & Fighter Analysis Platform
 
-As a computer science student and MMA fan, I created FightIQ to serve as a searchable and sortable UFC statistics database. The app allows users to explore detailed fighter data, compare metrics, and discover insights — all through a modern, responsive interface.
+FightIQ was built to serve as a searchable and sortable UFC statistics database. The app allows users to explore detailed fighter data, compare metrics, and discover insights — all through a modern, responsive interface.
 
 ---
 
