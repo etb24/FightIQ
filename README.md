@@ -7,24 +7,21 @@ FightIQ was built to serve as a searchable and sortable UFC statistics database.
 ## Tech Stack
 
 ### Frontend
-- **React** with **TypeScript**
-- **React Router v6**
-- **Axios** for API requests
-- **Modular component architecture**
-- **Dark theme** with custom styling
+- **React**
+- **TypeScript**
+
 
 ### Backend
-- **Java 17** + **Spring Boot**
-- **Spring Data JPA** for ORM
-- **PostgreSQL** for relational data
-- **REST API** for frontend integration
+- **Java**
+- **Spring Boot**
+- **PostgreSQL**
 
 ---
 
 ## Features
 
 - **Search & Filters**: Filter fighters by name, weight class, or country
-- **Sortable Table**: Click any stat column to sort, with intelligent default directions
+- **Sortable Table**: Click any stat column to sort
 - **Pagination Support**: Navigate between pages of fighters easily
 
 ---
