@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
                     </a>
                 </div>
             </div>
-            <p className="footer-bottom">© 2025 FightIQ. All rights reserved.</p>
+            <p className="footer-bottom">© 2025 FightIQ.</p>
         </footer>
     );
 };
