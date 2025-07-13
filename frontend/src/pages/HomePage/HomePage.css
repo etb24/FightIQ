@@ -32,26 +32,3 @@
 .hero button:hover {
     background-color: var(--primary-color-hover);
 }
-
-.features {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    justify-content: center;
-    padding: 2rem;
-}
-
-.feature-card {
-    background-color: #1e1e1e;
-    border: 1px solid #333;
-    border-radius: 10px;
-    padding: 1.5rem;
-    color: #f5f5f5;
-    max-width: 300px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s ease;
-}
-
-.feature-card:hover {
-    transform: translateY(-4px);
-}
