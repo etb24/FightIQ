@@ -22,7 +22,36 @@ public class FighterService {
         this.fighterRepository = fighterRepository;
     }
 
+    public Page<Fighter> getFilteredFighters(String name, String weightClass, String country, Pageable pageable) {
+        if (name != null && weightClass != null && country != null)
+            return fighterRepository.findByNameContainingIgnoreCaseAndWeightClassIgnoreCaseAndCountryIgnoreCase(name, weightClass, country, pageable);
+        else if (name != null && weightClass != null)
+            return fighterRepository.findByNameContainingIgnoreCaseAndWeightClassIgnoreCase(name, weightClass, pageable);
+        else if (name != null && country != null)
+            return fighterRepository.findByNameContainingIgnoreCaseAndCountryIgnoreCase(name, country, pageable);
+        else if (weightClass != null && country != null)
+            return fighterRepository.findByCountryIgnoreCaseAndWeightClassIgnoreCase(country, weightClass, pageable);
+        else if (name != null)
+            return fighterRepository.findByNameContainingIgnoreCase(name, pageable);
+        else if (weightClass != null)
+            return fighterRepository.findByWeightClassIgnoreCase(weightClass, pageable);
+        else if (country != null)
+            return fighterRepository.findByCountryIgnoreCase(country, pageable);
+        else
+            return fighterRepository.findAll(pageable);
+    }
 
+    public Page<Fighter> getFightersByNameAndWeight_ClassAndCountry(String name, String weightClass, String country, Pageable pageable) {
+        return fighterRepository.findByNameContainingIgnoreCaseAndWeightClassIgnoreCaseAndCountryIgnoreCase(name, weightClass, country, pageable);
+    }
+
+    public Page<Fighter> getFightersByNameAndWeight_Class(String name, String weightClass, Pageable pageable) {
+        return fighterRepository.findByNameContainingIgnoreCaseAndWeightClassIgnoreCase(name, weightClass, pageable);
+    }
+
+    public Page<Fighter> getFightersByNameAndCountry(String name, String country, Pageable pageable) {
+        return fighterRepository.findByNameContainingIgnoreCaseAndCountryIgnoreCase(name, country, pageable);
+    }
 
     public Page<Fighter> getFightersFromName(String name, Pageable pageable) {
         return fighterRepository.findByNameContainingIgnoreCase(name, pageable);

@@ -30,17 +30,7 @@ public class FighterController {
             @RequestParam(required = false) String country,
             @PageableDefault(sort = "name", direction = Sort.Direction.ASC)Pageable pageable
     ) {
-        if (name != null) {
-            return fighterService.getFightersFromName(name, pageable);
-        } else if (country != null && weight_class != null) {
-            return fighterService.getFightersByCountryAndWeight_Class(country, weight_class, pageable);
-        } else if (weight_class != null) {
-            return fighterService.getFightersFromWeight_Class(weight_class, pageable);
-        } else if (country != null) {
-            return fighterService.getFightersFromCountry(country, pageable);
-        } else {
-            return fighterService.getFighters(pageable);
-        }
+        return fighterService.getFilteredFighters(name, weight_class, country, pageable);
     }
 
     @GetMapping("/countries")

@@ -15,4 +15,7 @@ public interface FighterRepository extends JpaRepository<Fighter, String> {
     Page<Fighter> findByCountryIgnoreCaseAndWeightClassIgnoreCase(String country, String weightClass, Pageable pageable);
     Page<Fighter> findByWeightClassIgnoreCase(String weightClass, Pageable pageable);
     Page<Fighter> findByCountryIgnoreCase(String country, Pageable pageable);
+    Page<Fighter> findByNameContainingIgnoreCaseAndWeightClassIgnoreCaseAndCountryIgnoreCase(String name, String weightClass, String country, Pageable pageable);
+    Page<Fighter> findByNameContainingIgnoreCaseAndCountryIgnoreCase(String name, String country, Pageable pageable);
+    Page<Fighter> findByNameContainingIgnoreCaseAndWeightClassIgnoreCase(String name, String weightClass, Pageable pageable);
 }
