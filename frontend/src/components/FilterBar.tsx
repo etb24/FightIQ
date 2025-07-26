@@ -20,7 +20,8 @@ const FilterBar: React.FC<FilterBarProps> = ({
                 <input
                     type="text"
                     value={searchText}
-                    onChange={(e) => onSearchTextChange(e.target.value)}
+                    onChange={e => onSearchTextChange(e.target.value)}
+                    onBlur={() => onSearch()}
                     placeholder="Enter fighter name"
                 />
             </label>
