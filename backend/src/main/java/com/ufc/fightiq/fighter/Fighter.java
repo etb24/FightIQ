@@ -13,6 +13,7 @@ public class Fighter {
     @Id
     @Column(name = "name")
     private String name;
+    @Column(name = "nickname")
     private String nickname;
 
     @Column(name = "weight_class") //necessary for service functions
@@ -135,7 +136,6 @@ public class Fighter {
     }
 
     // Setters
-
 
     public void setName(String name) {
         this.name = name;
@@ -273,8 +273,8 @@ public class Fighter {
         this.winBySubmission = winBySubmission;
     }
 
-    // Getters
 
+    // Getters
 
     public String getName() {
         return name;
