@@ -22,6 +22,11 @@ const FilterBar: React.FC<FilterBarProps> = ({
                     value={searchText}
                     onChange={e => onSearchTextChange(e.target.value)}
                     onBlur={() => onSearch()}
+                    onKeyDown={e => {
+                        if (e.key === 'Enter') {
+                            onSearch();
+                        }
+                    }}
                     placeholder="Enter fighter name"
                 />
             </label>
