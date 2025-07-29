@@ -9,6 +9,7 @@ FightIQ was built to serve as a searchable and sortable UFC statistics database.
 ### Frontend
 - **React**
 - **TypeScript**
+- **HTML/CSS**
 
 
 ### Backend
@@ -66,12 +67,3 @@ FightIQ was built to serve as a searchable and sortable UFC statistics database.
 - Set up **automated testing** from the beginning  
 - Add **CI/CD pipeline** to simplify deployment  
 - Perform **frontend error boundary checks** for failed API calls
-
----
-
-
-## Technologies to Explore Next
-
-- **Docker**: For smoother backend deployment
-- **JWT Auth + PostgreSQL Users**: Add user accounts and saved filters
-- **Chart Libraries**: Visualize fighter trends and breakdowns
