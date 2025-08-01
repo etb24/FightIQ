@@ -1,6 +1,6 @@
 import React from 'react'
 import './Footer.css';
-import { FaGithub, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaEnvelope, FaLinkedin } from 'react-icons/fa';
 
 
 const Footer: React.FC = () => {
@@ -14,6 +14,9 @@ const Footer: React.FC = () => {
                 <div className="footer-icons">
                     <a href="https://github.com/etb24" target="_blank" rel="noreferrer">
                         <FaGithub size={24} />
+                    </a>
+                    <a href="https://www.linkedin.com/in/ethanbonato/" target="_blank" rel="noreferrer">
+                        <FaLinkedin size={24} />
                     </a>
                     <a href="mailto:bonatoethan@gmail.com" target="_blank" rel="noreferrer">
                         <FaEnvelope size={24} />

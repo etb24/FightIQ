@@ -5,7 +5,9 @@ import './NavBar.css';
 const NavBar: React.FC = () => {
     return (
         <nav className="navbar">
-            <div className="navbar-logo">FightIQ</div>
+            <div className="navbar-logo">
+                <Link to="/" className="logo-link">FightIQ</Link>
+            </div>
             <ul className="navbar-links">
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/fighters">Fighters</Link></li>

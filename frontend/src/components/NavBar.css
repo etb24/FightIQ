@@ -8,9 +8,11 @@
     color: white;
 }
 
-.navbar-logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+.navbar-logo .logo-link {
+  color: white;
+  text-decoration: none; /* removes underline */
+  font-weight: bold;      /* optional, for logo styling */
+  font-size: 1.5rem;      /* optional */
 }
 
 .navbar-links {
