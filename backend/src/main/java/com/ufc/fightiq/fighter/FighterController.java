@@ -2,7 +2,6 @@ package com.ufc.fightiq.fighter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -10,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -26,11 +24,11 @@ public class FighterController {
     @GetMapping
     public Page<Fighter> getFighters(
             @RequestParam(required = false) String name,
-            @RequestParam(required = false) String weight_class,
+            @RequestParam(name = "weight_class", required = false) String weightClass,
             @RequestParam(required = false) String country,
-            @PageableDefault(sort = "name", direction = Sort.Direction.ASC)Pageable pageable
+            @PageableDefault(sort = "name", direction = Sort.Direction.ASC) Pageable pageable
     ) {
-        return fighterService.getFilteredFighters(name, weight_class, country, pageable);
+        return fighterService.getFilteredFighters(name, weightClass, country, pageable);
     }
 
     @GetMapping("/countries")

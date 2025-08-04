@@ -17,7 +17,7 @@ public class Fighter {
     private String nickname;
 
     @Column(name = "weight_class") //necessary for service functions
-    private String weightClass; //weight_class caused bug
+    private String weightClass; //weightClass caused bug
 
     @Column(name = "wins")
     private Integer wins;
@@ -145,7 +145,7 @@ public class Fighter {
         this.nickname = nickname;
     }
 
-    public void setWeightClass(String weightClass) {
+    public void setweightClass(String weightClass) {
         this.weightClass = weightClass;
     }
 
@@ -284,7 +284,7 @@ public class Fighter {
         return nickname;
     }
 
-    public String getWeightClass() {
+    public String getweightClass() {
         return weightClass;
     }
 
