@@ -1,6 +1,6 @@
 # FightIQ – UFC Stats & Fighter Analysis Platform
 
-FightIQ was built to serve as a searchable and sortable UFC statistics database. The app allows users to explore detailed fighter data, compare metrics, and discover insights — all through a modern, responsive interface.
+FightIQ was built to serve as a searchable and sortable UFC statistics database. The app allows users to explore detailed fighter data, compare metrics and discover insights all through a modern, responsive interface.
 
 ---
 
@@ -21,7 +21,7 @@ FightIQ was built to serve as a searchable and sortable UFC statistics database.
 
 ## Features
 
-- **Search & Filters**: Filter fighters by name, weight class, or country
+- **Search & Filters**: Filter fighters by name, weight class or country
 - **Sortable Table**: Click any stat column to sort
 - **Pagination Support**: Navigate between pages of fighters easily
 
@@ -59,7 +59,7 @@ FightIQ was built to serve as a searchable and sortable UFC statistics database.
 ## Lessons Learned
 
 ### What Worked Well
-- **Code Modularity**: Components, hooks, and utility functions well-isolated  
+- **Code Modularity**: Components, hooks and utility functions well-isolated  
 - **Backend-first**: API-first approach made frontend integration smoother  
 - **Incremental UI Building**: Testing each page and state transition individually
 
