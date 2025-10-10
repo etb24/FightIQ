@@ -10,10 +10,12 @@ const App: React.FC = () => {
     return (
         <Router>
             <NavBar />
-            <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/fighters" element={<FightersPage />} />
-            </Routes>
+            <main className="app-main">
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/fighters" element={<FightersPage />} />
+                </Routes>
+            </main>
             <Footer/>
         </Router>
     );
