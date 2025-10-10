@@ -31,8 +31,11 @@ const FightersPage: React.FC = () => {
     if (error) return <p>Error: {error.message}</p>;
 
     return (
-        <div>
-            <h1 className={"page-heading"}>All UFC Fighters</h1>
+        <section className="page-section">
+            <header className="page-header">
+                <h1 className="page-heading">All UFC Fighters</h1>
+                <p className="page-subheading">Search, filter, and compare UFC athletes across every weight class.</p>
+            </header>
             <FilterBar
                 searchText={searchText}
                 country={selectedCountry}
@@ -57,7 +60,7 @@ const FightersPage: React.FC = () => {
                 onPrevious={() => setPage(prev => Math.max(prev - 1, 0))}
                 onNext={() => setPage(prev => prev + 1)}
             />
-        </div>
+        </section>
     );
 };
 

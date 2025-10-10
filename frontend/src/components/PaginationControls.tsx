@@ -13,7 +13,7 @@ const PaginationControls: React.FC<PaginationControlProps> = ({ page, totalPages
                 Page {page + 1} of {totalPages}
             </span>
 
-            <button onClick={onNext} disabled={page + 1 >= totalPages} aria-label="Next page">
+            <button className="pagination-btn" onClick={onNext} disabled={page + 1 >= totalPages} aria-label="Next page">
                 Next
             </button>
         </nav>

@@ -21,7 +21,6 @@ const FilterBar: React.FC<FilterBarProps> = ({
                     type="text"
                     value={searchText}
                     onChange={e => onSearchTextChange(e.target.value)}
-                    onBlur={() => onSearch()}
                     onKeyDown={e => {
                         if (e.key === 'Enter') {
                             onSearch();
