@@ -87,22 +87,54 @@ export const useFightersPage = () => {
     };
 
     useEffect(() => {
-        setLoading(true);
+        let isMounted = true;
+
         fetchCountries()
             .then((data) => {
-                setCountries(data);
-            })
-        fetchFighters(searchQuery, selectedCountry, selectedWeightClass, page, pageSize, sortBy, sortDirection)
-            .then(data => {
-                setFighters(data.content);
-                setTotalPages(data.totalPages);
-                setLoading(false);
+                if (isMounted) {
+                    setCountries(data);
+                }
             })
             .catch(err => {
-                setError(err);
-                setLoading(false);
+                if (isMounted) {
+                    setError(err);
+                }
             });
-    }, [searchQuery, selectedCountry, selectedWeightClass, page, sortBy, sortDirection]);
+
+        return () => {
+            isMounted = false;
+        };
+    }, []);
+
+    useEffect(() => {
+        let isMounted = true;
+
+        setLoading(true);
+        setError(null);
+
+        fetchFighters(searchQuery, selectedCountry, selectedWeightClass, page, pageSize, sortBy, sortDirection)
+            .then(data => {
+                if (!isMounted) {
+                    return;
+                }
+                setFighters(data.content);
+                setTotalPages(data.totalPages);
+            })
+            .catch(err => {
+                if (isMounted) {
+                    setError(err);
+                }
+            })
+            .finally(() => {
+                if (isMounted) {
+                    setLoading(false);
+                }
+            });
+
+        return () => {
+            isMounted = false;
+        };
+    }, [searchQuery, selectedCountry, selectedWeightClass, page, pageSize, sortBy, sortDirection]);
 
     return {
         fighters,
@@ -126,4 +158,3 @@ export const useFightersPage = () => {
         updateFilterAndResetPage,
     };
 };
-

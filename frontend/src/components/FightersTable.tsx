@@ -22,7 +22,7 @@ const FightersTable: React.FC<FightersTableProps> = ({ fighters, onSort }) => {
                     <th onClick={() => onSort('strikingAccuracy')}>Striking Accuracy</th>
                     <th onClick={() => onSort('takedownAccuracy')}>Takedown Accuracy</th>
                     <th onClick={() => onSort('sigStrLandedTotal')}>Sig Strikes Landed</th>
-                    <th onClick={() => onSort('sigAtrAttemptedTotal')}>Sig Strikes Attempted</th>
+                    <th onClick={() => onSort('sigStrAttemptedTotal')}>Sig Strikes Attempted</th>
                     <th onClick={() => onSort('takedownsLandedTotal')}>Takedowns Landed</th>
                     <th onClick={() => onSort('takedownsAttemptedTotal')}>Takedowns Attempted</th>
                     <th onClick={() => onSort('sigStrikesPerMin')}>Sig Strikes Per Min</th>
