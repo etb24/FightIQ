@@ -32,7 +32,7 @@ FightIQ was built to serve as a searchable and sortable UFC statistics database.
 - Fighter comparison view  
 - Fighter profiles with career stats  
 - ML-powered fight prediction
-- Upcoming events landing page  
+- Upcoming events landing page
 - Integration with UFC live data feeds
 
 ---
@@ -48,22 +48,3 @@ FightIQ was built to serve as a searchable and sortable UFC statistics database.
 - Cleaned and loaded large CSVs into PostgreSQL
 - Designed schema for fighter stats with normalization
 - Implemented fallback values for missing/null fields
-
-### DevOps & Deployment
-- Environment separation for local and production
-- API designed with scalability in mind
-- Planning future Docker containerization
-
----
-
-## Lessons Learned
-
-### What Worked Well
-- **Code Modularity**: Components, hooks and utility functions well-isolated  
-- **Backend-first**: API-first approach made frontend integration smoother  
-- **Incremental UI Building**: Testing each page and state transition individually
-
-### What I’d Improve Next Time
-- Set up **automated testing** from the beginning  
-- Add **CI/CD pipeline** to simplify deployment  
-- Perform **frontend error boundary checks** for failed API calls
